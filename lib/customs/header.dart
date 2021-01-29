@@ -23,6 +23,7 @@ class Header extends StatelessWidget {
           Expense('Gifts', 49.00, Color(0xfffe91ca)),
           Expense('Gaming', 27.35, Color(0xfff6d743)),
           Expense('Entertainment', 34.99, Color(0xfff57b51)),
+         
         ])
   ];
 
@@ -67,63 +68,71 @@ class Header extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        OutlineButton(
-          onPressed: addTransaction,
-          borderSide: const BorderSide(width: 1, color: Colors.white),
-          shape:
-              RoundedRectangleBorder(borderRadius: BorderRadius.circular(24)),
-          child: Container(
-            width: 127,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                const Icon(
-                  Icons.playlist_add,
-                  color: Colors.white,
-                ),
-                const SizedBox(
-                  width: 4,
-                ),
-                const Text(
-                  'Add Transaction',
-                  style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 12,
-                    color: Colors.white,
-                  ),
-                )
-              ],
-            ),
-          ),
-        ),
-        FlatButton(
-          color: Colors.white,
-          onPressed: () {},
-          child: Container(
-            width: 72,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text(
-                  'Reports',
-                  style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 12,
-                    color: primary,
-                  ),
-                ),
-                Icon(
-                  Icons.navigate_next,
-                  color: primary,
-                )
-              ],
-            ),
-          ),
-          shape:
-              RoundedRectangleBorder(borderRadius: BorderRadius.circular(24)),
-        )
+        buildAddTransactionButton(),
+        buildReportButton(primary)
       ],
     );
+  }
+
+  FlatButton buildReportButton(Color primary) {
+    return FlatButton(
+        color: Colors.white,
+        onPressed: () {},
+        child: Container(
+          width: 72,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text(
+                'Reports',
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 12,
+                  color: primary,
+                ),
+              ),
+              Icon(
+                Icons.navigate_next,
+                color: primary,
+              )
+            ],
+          ),
+        ),
+        shape:
+            RoundedRectangleBorder(borderRadius: BorderRadius.circular(24)),
+      );
+  }
+
+  OutlineButton buildAddTransactionButton() {
+    return OutlineButton(
+        onPressed: addTransaction,
+        borderSide: const BorderSide(width: 1, color: Colors.white),
+        shape:
+            RoundedRectangleBorder(borderRadius: BorderRadius.circular(24)),
+        child: Container(
+          width: 127,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              const Icon(
+                Icons.playlist_add,
+                color: Colors.white,
+              ),
+              const SizedBox(
+                width: 4,
+              ),
+              const Text(
+                'Add Transaction',
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 12,
+                  color: Colors.white,
+                ),
+              )
+            ],
+          ),
+        ),
+      );
   }
 
   SizedBox separator() {

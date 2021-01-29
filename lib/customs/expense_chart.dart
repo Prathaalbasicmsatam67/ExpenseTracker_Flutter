@@ -19,7 +19,7 @@ class ExpenseChart extends StatelessWidget {
         strokeWidthPx: 0,
         arcRendererDecorators: [
           charts.ArcLabelDecorator(labelPadding: 0,
-          showLeaderLines: false,
+          showLeaderLines: true,
           outsideLabelStyleSpec: charts.TextStyleSpec(
             fontSize: 12,
             fontFamily: 'quicksand',

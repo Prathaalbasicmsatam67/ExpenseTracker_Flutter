@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app_expensetracker/pages/HomePage.dart';
+import 'package:flutter_app_expensetracker/pages/LoginScreen.dart';
+import 'package:flutter_app_expensetracker/pages/WelcomePage.dart';
 import 'package:provider/provider.dart';
 import './providers/transaction.dart';
 
@@ -32,7 +34,8 @@ class MyApp extends StatelessWidget {
       child: MaterialApp(
         title: 'Personal Finance',
         debugShowCheckedModeBanner: false,
-        home: HomePage(),
+        // home: HomePage(),
+        home: LoginScreen(),
         theme: ThemeData(
 
           primarySwatch: _2A363B,

@@ -34,7 +34,10 @@ class _HomePageState extends State<HomePage> {
       body: Stack(
         children: [
           Column(
-            children: [Header(_addTransaction), NewTransaction(_opacity, _done)],
+            children: [
+              Header(_addTransaction),
+              NewTransaction(_opacity, _done),
+            ],
           ),
           TransactionCard(height)
         ],
