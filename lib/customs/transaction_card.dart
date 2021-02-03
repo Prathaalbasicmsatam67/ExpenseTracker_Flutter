@@ -24,6 +24,7 @@ class _TransactionCardState extends State<TransactionCard> {
     final providerTransaction = Provider.of<Transactions>(context);
 
     return Positioned(
+      // top: mediaQuery.size.height * widget.height,
       child: AnimatedContainer(
         duration: Duration(seconds: 1),
         curve: Curves.fastLinearToSlowEaseIn,

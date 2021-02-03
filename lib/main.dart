@@ -29,6 +29,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
     return ChangeNotifierProvider(
       create: (context) => Transactions(),
       child: MaterialApp(
@@ -37,7 +38,7 @@ class MyApp extends StatelessWidget {
         // home: HomePage(),
         home: LoginScreen(),
         theme: ThemeData(
-
+          unselectedWidgetColor: Colors.white.withOpacity(.4),
           primarySwatch: _2A363B,
           fontFamily: 'quicksand',
           visualDensity: VisualDensity.adaptivePlatformDensity,

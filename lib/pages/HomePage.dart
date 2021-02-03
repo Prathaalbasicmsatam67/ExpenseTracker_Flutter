@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
+import 'package:flutter_app_expensetracker/pages/FinanceDashboard.dart';
+import 'package:flutter_app_expensetracker/pages/TodoDashboard.dart';
 import '../customs/header.dart';
 import '../customs/transaction_card.dart';
 import '../customs/new_transaction.dart';
@@ -9,38 +12,38 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  double height = .55;
-  double _opacity = .9;
-
-  void _addTransaction() {
-    setState(() {
-      height = .08;
-      _opacity = 1;
-    });
-  }
-
-  void _done() {
-    setState(() {
-      height = .55;
-      _opacity = .9;
-    });
-  }
+  int _currentIndex = 0;
+  final tabs = [
+    FinanceDashboard(),
+    TodoDashboard(),
+    Center(
+      child: Text('Location'),
+    ),
+  ];
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.black,
-      appBar: buildAppBar(),
-      body: Stack(
-        children: [
-          Column(
-            children: [
-              Header(_addTransaction),
-              NewTransaction(_opacity, _done),
-            ],
-          ),
-          TransactionCard(height)
-        ],
+    return SafeArea(
+      child: Scaffold(
+        backgroundColor: Colors.black,
+        appBar: buildAppBar(),
+        bottomNavigationBar: BottomNavigationBar(
+          onTap: (index) {
+            setState(() {
+              _currentIndex = index;
+            });
+          },
+
+          items: [
+            BottomNavigationBarItem(
+                icon: Icon(Icons.attach_money), label: 'Finance'),
+            BottomNavigationBarItem(
+                icon: Icon(Icons.toc), label: 'Todo'),
+            BottomNavigationBarItem(
+                icon: Icon(Icons.location_on), label: 'Location'),
+          ],
+        ),
+        body: tabs[_currentIndex],
       ),
     );
   }
